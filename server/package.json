@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start:server": "npm run build && node dist/server.js", 
+    "start:server": "npm run build && node dist/server.js",
     "start:client": "npm --prefix ../client run dev",
     "start:full": "concurrently \"npm run start:server\" \"npm --prefix ../client run dev\"",
     "build": "npx tsc",
@@ -46,7 +46,6 @@
     "@types/serve-static": "^1.15.7",
     "@types/validator": "^13.12.2",
     "concurrently": "^9.1.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.7.2"
   }
 }
-
