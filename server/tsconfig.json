@@ -2,11 +2,11 @@
   "compilerOptions": {
     "outDir": "./dist", // Ensure this points to `dist`
     "rootDir": "./src",
-    "module": "Node16",
+    "module": "CommonJS",
     "target": "ES6",
     "strict": true,
     "esModuleInterop": true,
-    "moduleResolution": "node16",
+    "moduleResolution": "Node",
     "baseUrl": "./",
     "paths": {
       "*": ["node_modules/*"]
