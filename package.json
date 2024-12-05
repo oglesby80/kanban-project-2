@@ -1,22 +1,21 @@
 {
   "name": "main",
   "version": "1.0.0",
-  "description": "",
+  "description": "Root package for the project including server and client",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && node dist/server.js",
-    "start:server": "npm run build && node dist/server.js",
+    "start": "npm run build && node dist/server.js", 
+    "start:server": "cd server && npm start", 
     "start:dev": "concurrently \"npm run server:dev\" \"wait-on tcp:3001 && npm run client:dev\"",
-    "server": "cd server && npm start",
-    "server:dev": "cd server && npm run dev",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "client:build": "cd client && npm run build",
-    "client:dev": "cd client && npm run dev",
-    "build": "npx tsc",
-    "seed": "cd server && npm run seed",
-    "render-build": "npm install && npm run build",
-    "render-start": "npm install && npm start"
+    "server:dev": "cd server && npm run dev", 
+    "client:build": "cd client && npm run build", 
+    "client:dev": "cd client && npm run dev", 
+    "install": "cd server && npm i && cd ../client && npm i", 
+    "build": "cd server && npm run build && npm run client:build", 
+    "seed": "cd server && npm run seed", 
+    "render-build": "npm install && npm run build", 
+    "render-start": "npm start" 
   },
   "keywords": [],
   "author": "",
@@ -27,3 +26,4 @@
     "wait-on": "^7.2.0"
   }
 }
+
