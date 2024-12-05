@@ -14,7 +14,7 @@ const login = async (userInfo: UserLogin): Promise<string> => {
             throw new Error('Invalid login credentials');
         }
 
-        const data = await response.json();
+        const data: { token: string } = await response.json(); // Explicitly define the expected shape of the response
         return data.token; // Return the token from the response
     } catch (error) {
         console.error('Login error:', error);
@@ -23,5 +23,6 @@ const login = async (userInfo: UserLogin): Promise<string> => {
 };
 
 export { login };
+
 
 

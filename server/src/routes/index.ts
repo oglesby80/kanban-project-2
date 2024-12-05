@@ -1,18 +1,17 @@
 import { Router } from 'express';
-import path from 'path';
-console.log('Resolved Path:', path.resolve('./routes/auth-routes.js'));
-
-import authRoutes from './auth-routes.js';
-import apiRoutes from './api/index';
-import { authenticateToken } from '../middleware/auth'; // Ensure the path is correct
+import authRoutes from './api/auth-routes.js'; // Ensure this path is correct
+import { authenticateToken } from '../middleware/auth.js'; // Middleware for authentication
+import apiRoutes from './api/index.js'; // Import all routes under `/api`
 
 const router = Router();
 
-// Public routes (authentication)
+// Public routes (e.g., authentication)
 router.use('/auth', authRoutes);
 
-// Protected routes (requires authentication)
+// Protected API routes (require authentication)
 router.use('/api', authenticateToken, apiRoutes);
+
+
 
 export default router;
 

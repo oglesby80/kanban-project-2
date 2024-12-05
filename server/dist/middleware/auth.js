@@ -13,6 +13,7 @@ export const authenticateToken = (req, res, next) => {
         next(); // Call the next middleware
     }
     catch (error) {
+        console.error('Token verification error:', error);
         res.status(403).json({ message: 'Invalid or expired token.' });
     }
 };

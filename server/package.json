@@ -1,13 +1,15 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Server-side for the application",
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "start:server": "npm run build && node dist/server.js", 
+    "start:client": "npm --prefix ../client run dev",
+    "start:full": "concurrently \"npm run start:server\" \"npm --prefix ../client run dev\"",
     "build": "npx tsc",
-    "start": "npm run build && node dist/server.js --ignore client",
-    "dev": "npx nodemon",
+    "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node dist/seeds/index.js"
   },
@@ -32,8 +34,19 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/body-parser": "^1.19.5",
     "@types/express": "^4.17.21",
+    "@types/http-errors": "^2.0.4",
     "@types/jsonwebtoken": "^9.0.6",
+    "@types/mime": "^3.0.4",
+    "@types/ms": "^0.7.34",
+    "@types/qs": "^6.9.17",
+    "@types/range-parser": "^1.2.7",
+    "@types/send": "^0.17.4",
+    "@types/serve-static": "^1.15.7",
+    "@types/validator": "^13.12.2",
+    "concurrently": "^9.1.0",
     "typescript": "^5.4.5"
   }
 }
+

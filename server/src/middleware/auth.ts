@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 
-interface JwtPayload {
+interface CustomJwtPayload extends JwtPayload {
     username: string;
+    id: string;
 }
 
 export const authenticateToken = (req: Request, res: Response, next: NextFunction): void => {
@@ -16,14 +17,16 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
 
     try {
         const secretKey = process.env.JWT_SECRET_KEY || 'default_secret';
-        const decoded = jwt.verify(token, secretKey) as JwtPayload;
+        const decoded = jwt.verify(token, secretKey) as CustomJwtPayload;
 
         req.user = decoded; // Attach decoded user to the request
         next(); // Call the next middleware
     } catch (error) {
+        console.error('Token verification error:', error);
         res.status(403).json({ message: 'Invalid or expired token.' });
     }
 };
+
 
   
 

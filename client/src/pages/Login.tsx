@@ -20,12 +20,18 @@ const Login = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const data = await login(loginData);
-      Auth.login(data.token);
+        // Call login function and get the token directly
+        const token = await login(loginData);
+
+        // Use Auth to save the token
+        Auth.login(token); // Assuming Auth.login stores the token in localStorage
+
+        console.log('Login successful:', token);
     } catch (err) {
-      console.error('Failed to login', err);
+        console.error('Failed to login', err);
     }
-  };
+};
+
 
   return (
     <div className='container'>
