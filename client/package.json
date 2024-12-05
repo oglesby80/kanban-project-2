@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "start": "npm run dev",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "client:build": "cd client && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {
