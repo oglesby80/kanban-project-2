@@ -1,11 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.authenticateToken = void 0;
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const authenticateToken = (req, res, next) => {
+import jwt from 'jsonwebtoken';
+export const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1]; // Format: "Bearer <token>"
     if (!token) {
@@ -14,7 +8,7 @@ const authenticateToken = (req, res, next) => {
     }
     try {
         const secretKey = process.env.JWT_SECRET_KEY || 'default_secret';
-        const decoded = jsonwebtoken_1.default.verify(token, secretKey);
+        const decoded = jwt.verify(token, secretKey);
         req.user = decoded; // Attach decoded user to the request
         next(); // Call the next middleware
     }
@@ -23,4 +17,3 @@ const authenticateToken = (req, res, next) => {
         res.status(403).json({ message: 'Invalid or expired token.' });
     }
 };
-exports.authenticateToken = authenticateToken;

@@ -1,9 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.userRouter = void 0;
-const express_1 = require("express");
-const userRouter = (0, express_1.Router)();
-exports.userRouter = userRouter;
+import { Router } from 'express';
+const userRouter = Router();
 // Example GET route for fetching all users
 userRouter.get('/', (req, res) => {
     res.json({ message: 'All users fetched successfully.' });
@@ -18,3 +14,4 @@ userRouter.get('/:id', (req, res) => {
     const { id } = req.params;
     res.json({ message: `User with ID: ${id} fetched successfully.` });
 });
+export { userRouter };

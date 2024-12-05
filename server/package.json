@@ -2,21 +2,20 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Server-side for the application",
-  "main": "server.js",
+  "main": "dist/server.js",
   "type": "module",
   "scripts": {
+    "start": "npm run build && node dist/server.js",
     "start:server": "npm run build && node dist/server.js",
     "start:client": "npm --prefix ../client run dev",
     "start:full": "concurrently \"npm run start:server\" \"npm --prefix ../client run dev\"",
     "build": "npx tsc",
-    "dev": "nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node dist/seeds/index.js"
+    "dev": "nodemon src/server.ts",
+    "seed": "node dist/seeds/index.js",
+    "install": "npm install && cd ../client && npm install"
   },
   "nodemonConfig": {
-    "watch": [
-      "src"
-    ],
+    "watch": ["src"],
     "ext": "ts,json,js",
     "exec": "npx tsc && node dist/server.js"
   },
@@ -49,3 +48,4 @@
     "typescript": "^5.7.2"
   }
 }
+

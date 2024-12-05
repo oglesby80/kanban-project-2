@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
-    "outDir": "./dist", // Ensure this points to `dist`
-    "rootDir": "./src",
-    "module": "CommonJS",
-    "target": "ES6",
+    "target": "ES2022",
+    "module": "NodeNext", 
+    "moduleResolution": "NodeNext", 
+    "outDir": "dist",
     "strict": true,
     "esModuleInterop": true,
-    "moduleResolution": "Node",
-    "baseUrl": "./",
-    "paths": {
-      "*": ["node_modules/*"]
-    }
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"], // Ensure this includes `auth-routes.ts`
-  "exclude": ["node_modules", "dist"]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
 
